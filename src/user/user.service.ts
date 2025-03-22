@@ -8,10 +8,4 @@ export class UserService {
   async getUsers() {
     return this.prisma.user.findMany();
   }
-
-  async createUser(name: string, email: string) {
-    return this.prisma.user.create({
-      data: { name, email },
-    });
-  }
 }
