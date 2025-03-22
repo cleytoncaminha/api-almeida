@@ -23,4 +23,3 @@ export class CreateSessionDto {
   @IsString()
   link: string; // Link (opcional)
 }
-
