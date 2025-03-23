@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Param, Get, UseGuards } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { Task } from '@prisma/client';
-import { JwtAuthGuard } from 'src/auth/guards/auth-jwt.guard';
+import { JwtAuthGuard } from '../auth/guards/auth-jwt.guard';
 
 @Controller('tasks')
 export class TaskController {
