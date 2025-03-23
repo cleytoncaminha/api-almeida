@@ -15,7 +15,7 @@ export class AuthService {
   constructor(
     private userService: UserService,
     private jwtService: JwtService,
-    private readonly prisma: PrismaService,
+    private prisma: PrismaService,
   ) {}
 
   async login(email: string, password: string) {
@@ -60,6 +60,15 @@ export class AuthService {
   }
 
   async validateUserByJwt(payload: UserPayload) {
-    return this.prisma.user.findUnique({ where: { id: payload.userId } });
+    return this.prisma.user.findFirst({ where: { id: payload.userId } });
+  }
+
+  verifyJwtToken(token: string) {
+    try {
+      return this.jwtService.verify(token);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (e) {
+      throw new Error('Invalid token');
+    }
   }
 }

@@ -16,3 +16,13 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
+model Task {
+  id            String   @id @default(uuid())
+  title         String
+  code          String   @unique
+  phoneNumber   String
+  email         String?
+  product       String?
+  createdAt     DateTime @default(now())
+}
